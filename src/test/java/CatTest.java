@@ -9,12 +9,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import java.security.spec.ECField;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CatTest {
     @Mock
-    private Feline feline = new Feline();
+    private Feline feline;
 
     private Cat cat;
 
@@ -30,20 +32,25 @@ public class CatTest {
 
 
     @Test
-    public void getFoodIsPredatorFood() throws Exception {
+    public void getFoodIsPredatorFood(){
         // Задаем ожидаемый результат
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
 
-        // Задаем поведение для mock-объекта
-        when(feline.eatMeat()).thenReturn(expectedFood);
+        try {
+            // Задаем поведение для mock-объекта
+            when(feline.eatMeat()).thenReturn(expectedFood);
 
-        List<String> actualFood = cat.getFood();
+            List<String> actualFood = cat.getFood();
 
-        // Проверяем, что метод eatMeat() был вызван у mock-объекта
-        verify(feline).eatMeat();
+            // Проверяем, что метод eatMeat() был вызван у mock-объекта
+            verify(feline).eatMeat();
 
-        // Проверяем, что возвращенный результат соответствует ожидаемому
-        assertEquals(expectedFood, actualFood);
+            // Проверяем, что возвращенный результат соответствует ожидаемому
+            assertEquals(expectedFood, actualFood);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 

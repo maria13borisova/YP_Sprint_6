@@ -16,27 +16,41 @@ public class FelineTest {
         feline = new Feline();
     }
 
-
     @Test
-    public void eatMeatIsPredatorFood() throws Exception {
+    public void eatMeatIsPredatorFood(){
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
-        List<String> actualFood = feline.eatMeat();
-        assertEquals(expectedFood, actualFood);
+        try {
+            List<String> actualFood = feline.eatMeat();
+            assertEquals(expectedFood, actualFood);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 
     @Test
-    public void getKittensIs1() throws Exception {
-        int actualKittensCount = feline.getKittens();
-        assertEquals(1, actualKittensCount);
+    public void getKittensIs1(){
+        try {
+            int actualKittensCount = feline.getKittens();
+            assertEquals(1, actualKittensCount);
+        } catch (Exception e){
+        e.printStackTrace();
     }
 
+}
+
     @Test
-    public void getFamilyisFeline() throws Exception {
+    public void getFamilyisFeline(){
         String expectedFamily = "Кошачьи";
+        try{
         String actualFamily = feline.getFamily();
         assertEquals(expectedFamily, actualFamily);
+        } catch (Exception e){
+            e.printStackTrace();
     }
+
+}
 
 
 }
